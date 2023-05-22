@@ -14,10 +14,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
   },
-  image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundSize: 'cover',
-  },
   paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
@@ -38,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 async function loginUser(credentials) {
-  return fetch('https://www.mecallapi.com/api/login', {
+  return fetch('https://bot-biggy-agent-stg-aedsyeswba-as.a.run.app/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -49,6 +45,9 @@ async function loginUser(credentials) {
  }
 
 export default function Signin() {
+
+  const styles = { btnBackground:{ background : '#93d602' }};
+
   const classes = useStyles();
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
@@ -67,7 +66,7 @@ export default function Signin() {
       .then((value) => {
         localStorage.setItem('accessToken', response['accessToken']);
         localStorage.setItem('user', JSON.stringify(response['user']));
-        window.location.href = "/profile";
+        window.location.href = "/Dashboard";
       });
     } else {
       swal("Failed", response.message, "error");
@@ -77,7 +76,7 @@ export default function Signin() {
   return (
     <Grid container className={classes.root}>
       <CssBaseline />
-      <Grid item xs={false} md={7} className={classes.image} />
+      <Grid  md={3}/>
       <Grid item xs={12} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -114,6 +113,7 @@ export default function Signin() {
               variant="contained"
               color="primary"
               className={classes.submit}
+              style={styles.btnBackground}
             >
               Sign In
             </Button>

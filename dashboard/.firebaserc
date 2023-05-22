@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "cms-stg": "bigc-line",
+    "cms-prod": "bigc-line"
+  },
+  "targets": {
+    "bigc-line": {
+      "hosting": {
+        "cms-stg": [
+          "bigc-linechatbot-cms-stg"
+        ],
+        "cms-prod": [
+          "bigc-linechatbot-cms"
+        ]
+      }
+    }
+  }
+}
